@@ -1,27 +1,15 @@
-from django.forms import Form, CharField, FloatField, IntegerField, EmailField,PasswordInput, ImageField
-from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
-from django.contrib.auth.models import User
 
-class EditarUsuarioForm(UserCreationForm):
+from django.urls import path
+from sesionesapp.views import *
 
-    email= EmailField()
-    password1= CharField(label="Contraseña", widget=PasswordInput)
-    password2= CharField(label="Confirmar Contraseña", widget=PasswordInput)
+from django.contrib.auth.views import LogoutView
 
-    class Meta:
-        model= User
-        fields = ["email", "password1", "password2"]
-        help_texts = {"email":"", "password1":"", "password2":""}
-
-
-
-class CambiarContraseña(PasswordChangeForm):
-
-    class Meta:
-        model = User
-        fields = '__all__'
-
-
-
-class AvatarForm(Form):
-    imagen = ImageField()
+urlpatterns = [
+   
+    
+    path("iniciar_sesion/", iniciar_sesion, name="iniciar_sesion"),
+    path("cambiar_contrasenia/",cambiar_contrasenia, name="cambiar_contrasenia"),
+    path("registro/", registro_usuario, name="registro"),
+    path("logout/", LogoutView.as_view(template_name="sesionesapp/logout.html"), name="logout"),
+    path("agregar_avatar/",agregar_avatar, name="agregar_avatar"),
+     ]
