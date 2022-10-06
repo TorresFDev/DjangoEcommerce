@@ -1,0 +1,65 @@
+{% extends 'productosapp/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block header %}
+
+        
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3 py-5">
+            <div class="card mt-3 ">
+                <div class="card-body mt-3">
+                    <h2 style="text-align:center;">Buscar Productos</h2>
+                    
+                       <form action="" method="get">
+
+                            {{formulario | crispy}}
+                            <div>
+                            <input type="submit" value="Buscar" class="btn btn-danger float-right mt-3 ">
+                            <a class="btn btn-primary ms-2 mt-3" href="{% url 'productos' %}">Todos</a>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock header%}
+
+
+{% block contenido %}
+
+    <!--<p> total{{importe_total_carrito}}</p>mostrar el importe-->
+    {% for producto in productos %}
+
+    <div class="col mb-5">
+        <div class="card h-100">
+            <!-- Product image-->
+            <img class="card-img-top" src="/media/{{producto.imagen_productos}}" alt="..." />
+            <!-- Product details-->
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <!-- Product name-->
+                    <h5 class="fw-bolder">{{producto.nombre }} <br> {{ producto.marca }}</h5>
+                    <!-- Product price-->
+                    ${{producto.precio }}<br> Stock:{{producto.stock }}
+
+                </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                
+                
+                {% if user.is_superuser %}
+                <div class="text-center"><a class="btn btn-danger" href="{% url 'borrar_productos' producto.id %}">Borrar</a>
+                <a class="btn btn-warning" href="{% url 'editar_productos' producto.id %}">Editar</a></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+        
+    {% endfor %}
+    
+
+{% endblock contenido%}
