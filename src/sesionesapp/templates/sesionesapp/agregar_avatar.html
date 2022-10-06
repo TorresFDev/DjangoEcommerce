@@ -1,0 +1,31 @@
+{% extends 'productosapp/base.html' %}
+
+{% block header %}
+{% load crispy_forms_tags %}
+
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3 mt-5" >
+                <div class="card mt-5">
+                    <div class="card-body mt-5">
+
+                        {% if not user.avatar.imagen.url %}
+                        <h2 style="text-align:center;">Agregar Avatar</h2>
+                    
+                        {% else %}
+                        <h2 style="text-align:center;">Cambiar Avatar</h2>
+                        {% endif %}
+                        
+                        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+                            {{form | crispy}}
+                            <input type="submit" value="Confirmar" class="btn btn-primary mt-3 float-right">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock header %}
