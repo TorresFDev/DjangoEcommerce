@@ -1,6 +1,9 @@
-                                                                Hi 👋, I'm Facundo Torres.
+                                            Hi 👋, I'm Facundo Torres.
                                                          
                                An aspirant BackEnd developer from Buenos Aires, Argentina.
+                               
+                               
+                               
 In this project you will find a small ecommerce designed with DJANGO, in it we implemented: search and upload forms, crud, CBV, login, logout, user registration, sending mail from the contact form, inheritance of templates, avatars, validations among other things. I hope you enjoy watching the project as I did when doing it.
 
 🔅Requeriments Windows<br>
