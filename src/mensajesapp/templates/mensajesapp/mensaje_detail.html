@@ -1,0 +1,18 @@
+
+{% extends 'productosapp/base.html' %}
+
+
+{% block header %}
+
+<div class=" container card mt-5">
+    <div class="card-header">
+      {{mensaje.fecha}}
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>Texto Completo</p>
+        <footer class="blockquote-footer">{{mensaje.mensaje}}</footer>
+      </blockquote>
+    </div>
+  </div>
+{% endblock header %}

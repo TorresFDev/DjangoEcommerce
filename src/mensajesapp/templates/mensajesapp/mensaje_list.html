@@ -1,0 +1,30 @@
+{% extends 'productosapp/base.html' %}
+
+
+{% block header %}
+
+
+
+    {% for mensaje in object_list %}
+
+    <div class="container card mt-5">
+        <div class="card-header">
+         Fecha: {{mensaje.fecha}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{mensaje.nombre}}</h5>
+          <p class="card-text">{{mensaje.email}}</p>
+          <a href="{% url 'mensaje_detail' mensaje.id %}">Mostrar Texto</a>
+          {% if request.user.is_authenticated %}
+          <a href="{% url 'mensaje_editar' mensaje.id %}">Editar</a>
+          <a href="{% url 'mensaje_borrar' mensaje.id %}">Borrar</a></p>
+          {% endif %}
+        </div>
+      </div>
+        <div>
+
+    {% endfor %}
+
+
+
+{% endblock header %}
